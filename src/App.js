@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Navbar from './Components/Navbar/Navbar'
 import 'materialize-css';
-
+import Navbar from './Components/Navbar/Navbar'
+import Post from './Components/Post/Post'
 
 class App extends Component {
   constructor(props){
@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       name: "Guest",
       token: null,
-      loggedIn: false
+      loggedIn: true
     }
   }
 
@@ -22,7 +22,8 @@ class App extends Component {
           <Navbar loggedIn={this.state.loggedIn}/>
         </header>
         <body>
-  
+          <Post />
+          <Post />
         </body>
       </div>
     );
