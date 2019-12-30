@@ -4,7 +4,7 @@ import './Navbar.css'
 const Navbar = (props) => {
 
     return (
-        <nav className="blue lighten-3 z-depth-3">
+        <nav className="grey lighten-1 z-depth-3">
           <div className="nav-wrapper mynav">
             <a href="/" className="left brand-logo">Scandit</a>
             <ul id="nav-mobile" className="right">

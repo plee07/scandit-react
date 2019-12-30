@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.css'
-import {withRouter} from 'react-router-dom';
+import UserApi from '../../Api/userApi'
 
 class Login extends React.Component {
 
@@ -10,12 +10,18 @@ class Login extends React.Component {
   
   submitForm(e){
     //logic here to see if we got back a jwt
-    alert(e.target.user.value + " " + e.target.password.value)
-    let auth = true;
-    if(auth){
-        this.props.history.push('/')
-        this.props.clicked(e.target.user.value, "123");
-    }
+    e.preventDefault();
+    // const data = UserApi.login(e.target.user.value, e.target.password.value)
+    //   .then(data=> data)
+    //   .error(err => err);
+    // // alert(data.token);
+    UserApi.login(e.target.user.value, e.target.password.value)
+    // console.log(data);
+    // let auth = true;
+    // if(auth){
+    //     this.props.history.push('/')
+    //     this.props.clicked(e.target.user.value, "123");
+    // }
   }
 
   render() {
@@ -36,7 +42,7 @@ class Login extends React.Component {
     </div>
     </div>
     <div className="center-align">
-      <button className="waves-effect waves-light btn-large">Login</button>
+      <button className="grey lighten-1 waves-effect waves-light btn-large">Login</button>
     </div>
     </form>
     </div>        
@@ -45,4 +51,4 @@ class Login extends React.Component {
   };
 };
 
-export default withRouter(Login);
+export default Login;

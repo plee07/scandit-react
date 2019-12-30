@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Navbar from './Components/Navbar/Navbar'
 import Posts from './Components/Posts/Posts'
 import Login from './Components/Login/Login'
+import Signup from './Components/Signup/Signup'
 
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
     this.state = {
       name: "Guest",
       token: null,
-      loggedIn: true
+      loggedIn: false
     }
   }
   
@@ -35,6 +36,9 @@ class App extends Component {
             />
              <Route path="/login"
               render={(props) => (<Login {...props} clicked={this.testHandler}/>)}
+            />
+             <Route path="/signup"
+              render={(props) => (<Signup {...props} clicked={this.testHandler}/>)}
             />
           </Switch>
         </div>
