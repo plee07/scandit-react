@@ -1,18 +1,18 @@
 import React from 'react';
 import './Navbar.css'
-
+// eslint-disable-next-line
 const Navbar = (props) => {
 
     return (
-        <nav class="blue lighten-3">
-          <div class="nav-wrapper mynav">
-            <a href="#" class="left brand-logo">Scandit</a>
+        <nav className="blue lighten-3 z-depth-3">
+          <div className="nav-wrapper mynav">
+            <a href="/" className="left brand-logo">Scandit</a>
             <ul id="nav-mobile" class="right">
-              <li hidden={props.loggedIn}><a href="#">Login</a></li>
-              <li hidden={props.loggedIn}><a href="#">Signup</a></li>
-              <li hidden={!props.loggedIn}><a href="#">Create Post</a></li>
-              <li hidden={!props.loggedIn}><a href="#">View Profile</a></li>
-              <li hidden={!props.loggedIn}><a href="#">Logout</a></li>
+              <li hidden={props.loggedIn}><a href="/login">Login</a></li>
+              <li hidden={props.loggedIn}><a href="/signup">Signup</a></li>
+              <li hidden={!props.loggedIn}><a href="/post">Create Post</a></li>
+              <li hidden={!props.loggedIn}><a href="/profile">View Profile</a></li>
+              <li hidden={!props.loggedIn}><a href="/">Logout</a></li>
             </ul>
           </div>
         </nav>
