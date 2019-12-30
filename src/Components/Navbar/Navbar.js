@@ -1,7 +1,15 @@
 import React from 'react';
 import './Navbar.css'
+import Cookies from 'universal-cookie'
 // eslint-disable-next-line
 const Navbar = (props) => {
+    const cookies = new Cookies();
+
+    const logout = () =>{
+      console.log('clicked');
+      cookies.remove('jwt');
+      cookies.remove('user');
+    }
 
     return (
         <nav className="grey lighten-1 z-depth-3">
@@ -12,7 +20,7 @@ const Navbar = (props) => {
               <li hidden={props.loggedIn}><a href="/signup">Signup</a></li>
               <li hidden={!props.loggedIn}><a href="/post">Create Post</a></li>
               <li hidden={!props.loggedIn}><a href="/profile">View Profile</a></li>
-              <li hidden={!props.loggedIn}><a href="/">Logout</a></li>
+              <li hidden={!props.loggedIn}><a href="/" onClick={logout}>Logout</a></li>
             </ul>
           </div>
         </nav>

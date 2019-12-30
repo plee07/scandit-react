@@ -1,27 +1,39 @@
 import React from 'react';
 import './Login.css'
 import UserApi from '../../Api/userApi'
+import Jwt from 'jsonwebtoken'
 
 class Login extends React.Component {
 
   constructor(props){
     super(props);
+    this.state = {
+      errorMessage: false,
+      message: ""
+    }
   }
   
   submitForm(e){
-    //logic here to see if we got back a jwt
     e.preventDefault();
-    // const data = UserApi.login(e.target.user.value, e.target.password.value)
-    //   .then(data=> data)
-    //   .error(err => err);
-    // // alert(data.token);
     UserApi.login(e.target.user.value, e.target.password.value)
-    // console.log(data);
-    // let auth = true;
-    // if(auth){
-    //     this.props.history.push('/')
-    //     this.props.clicked(e.target.user.value, "123");
-    // }
+    .then((data)=>{
+      if(data.token){
+        this.setState({
+          errorMessage: false,
+          message: ""
+        })
+        this.props.clicked(Jwt.decode(data.token).sub,data.token);
+        this.props.history.push('/');
+      }
+      else if(data.message){
+        this.setState({
+          errorMessage: true,
+          message: data.message
+        })
+      }
+    }).catch((err)=>{
+      console.log("error:",err);
+    })
   }
 
   render() {
@@ -40,6 +52,7 @@ class Login extends React.Component {
       <input id="password" type="password" className="validate" name="password" />
       <label htmlFor="password">Password</label>
     </div>
+    <p hidden={!this.state.errorMessage}className="center-align">{this.state.message}</p>
     </div>
     <div className="center-align">
       <button className="grey lighten-1 waves-effect waves-light btn-large">Login</button>

@@ -6,25 +6,30 @@ import Navbar from './Components/Navbar/Navbar'
 import Posts from './Components/Posts/Posts'
 import Login from './Components/Login/Login'
 import Signup from './Components/Signup/Signup'
+import Cookies from 'universal-cookie'
 
 
 class App extends Component {
   constructor(props){
     super(props);
+    this.cookies = new Cookies();
     this.state = {
-      name: "Guest",
-      token: null,
-      loggedIn: false
+      name: this.cookies.get("user") ? this.cookies.get("user") : 'Guest',
+      token: this.cookies.get("jwt") ? this.cookies.get("jwt") : null,
+      loggedIn: this.cookies.get("jwt") ? true : false
     }
   }
   
-  testHandler = (username, jwt) =>{
+  loginHandler = (username, jwt) =>{
     this.setState({name: username, token: jwt, loggedIn: true})
+    this.cookies.set("jwt", jwt);
+    this.cookies.set("user", username);
   }
 
   render(){
 
     return (
+      // <CookiesProvider>
       <Router>
         <div className="App">
           <header>
@@ -35,14 +40,15 @@ class App extends Component {
               render={(props)=> (<Posts {...props} name={this.state.name}/>)} 
             />
              <Route path="/login"
-              render={(props) => (<Login {...props} clicked={this.testHandler}/>)}
+              render={(props) => (<Login {...props} clicked={this.loginHandler}/>)}
             />
              <Route path="/signup"
-              render={(props) => (<Signup {...props} clicked={this.testHandler}/>)}
+              render={(props) => (<Signup {...props} clicked={this.loginHandler}/>)}
             />
           </Switch>
         </div>
       </Router>
+      // </CookiesProvider>
     );
   }
 }
