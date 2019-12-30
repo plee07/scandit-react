@@ -7,7 +7,7 @@ const Navbar = (props) => {
         <nav className="blue lighten-3 z-depth-3">
           <div className="nav-wrapper mynav">
             <a href="/" className="left brand-logo">Scandit</a>
-            <ul id="nav-mobile" class="right">
+            <ul id="nav-mobile" className="right">
               <li hidden={props.loggedIn}><a href="/login">Login</a></li>
               <li hidden={props.loggedIn}><a href="/signup">Signup</a></li>
               <li hidden={!props.loggedIn}><a href="/post">Create Post</a></li>

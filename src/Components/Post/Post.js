@@ -10,8 +10,8 @@ const Post = (props) => {
         </div>
         <div className="card-tabs">
           <ul className="tabs tabs-fixed-width">
-            <li className="tab"><a class="active" href="/">View Comments</a></li>
-            <li className="tab"><a class="active" href="/">Delete Post</a></li>
+            <li className="tab"><a className="active" href="/">View Comments</a></li>
+            <li className="tab"><a className="active" href="/">Delete Post</a></li>
           </ul>
         </div>
       </div>

@@ -6,19 +6,19 @@ import Navbar from './Components/Navbar/Navbar'
 import Posts from './Components/Posts/Posts'
 import Login from './Components/Login/Login'
 
+
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
       name: "Guest",
       token: null,
-      loggedIn: false
+      loggedIn: true
     }
   }
-
-  testHandler = () =>{
-    this.setState({name:"Phil"})
-    this.props.history.push('/');
+  
+  testHandler = (username, jwt) =>{
+    this.setState({name: username, token: jwt, loggedIn: true})
   }
 
   render(){
