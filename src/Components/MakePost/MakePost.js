@@ -2,6 +2,7 @@ import React from 'react';
 import './MakePost.css';
 import PostApi from '../../Api/postApi'
 import Cookies from 'universal-cookie'
+
 class MakePost extends React.Component {
     constructor(props){
         super(props);
@@ -16,6 +17,7 @@ class MakePost extends React.Component {
         e.preventDefault();
         PostApi.makePost(e.target.title.value, e.target.description.value, this.cookies.get("jwt"))
         .then((data)=>{
+          console.log(data);
           if(data.postId){
             this.setState({
               errorMessage: false,
@@ -23,10 +25,10 @@ class MakePost extends React.Component {
             })
             this.props.history.push('/');
           }
-          else if(data.message){
+          else if(!data.postId && data.title){
             this.setState({
               errorMessage: true,
-              message: data.message
+              message: data.title
             })
           }
         }).catch((err)=>{
@@ -49,6 +51,7 @@ class MakePost extends React.Component {
                   <textarea id="description" className="materialize-textarea"></textarea>
                   <label htmlFor="description">Description</label>
                 </div>
+                <p hidden={!this.state.errorMessage}className="center-align error-message">{this.state.message}</p>
               </div>
               <div className="center-align">
                 <button className="grey lighten-1 waves-effect waves-light btn-large">Create Post</button>

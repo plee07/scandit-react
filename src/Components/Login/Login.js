@@ -52,7 +52,7 @@ class Login extends React.Component {
       <input id="password" type="password" className="validate" name="password" />
       <label htmlFor="password">Password</label>
     </div>
-    <p hidden={!this.state.errorMessage}className="center-align">{this.state.message}</p>
+    <p hidden={!this.state.errorMessage}className="center-align error-message">{this.state.message}</p>
     </div>
     <div className="center-align">
       <button className="grey lighten-1 waves-effect waves-light btn-large">Login</button>
