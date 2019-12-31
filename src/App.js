@@ -6,6 +6,7 @@ import Navbar from './Components/Navbar/Navbar'
 import Posts from './Components/Posts/Posts'
 import Login from './Components/Login/Login'
 import Signup from './Components/Signup/Signup'
+import MakePost from './Components/MakePost/MakePost'
 import Cookies from 'universal-cookie'
 
 
@@ -44,6 +45,9 @@ class App extends Component {
             />
              <Route path="/signup"
               render={(props) => (<Signup {...props} clicked={this.loginHandler}/>)}
+            />
+            <Route path="/post"
+              render={(props)=> (<MakePost {...props} clicked={this.postHandler}/>)}
             />
           </Switch>
         </div>

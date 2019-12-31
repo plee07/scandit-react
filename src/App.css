@@ -5,3 +5,7 @@ html * {
 body {
   background-color: #eeeeee;
 }
+
+header{
+  padding-bottom: 30px;
+}
