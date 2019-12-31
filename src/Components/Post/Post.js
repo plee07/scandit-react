@@ -5,13 +5,8 @@ const Post = (props) => {
     return (
         <div className="card myPost grey lighten-3">
         <div className="card-content ">
-          <p><b>Guest:</b></p><br></br>
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-          I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-          I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-          I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-          I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-          </p>
+          <p><b>{props.post.user.username}: {props.post.title}</b></p><br></br>
+          <p>{props.post.description}</p>
         </div>
         <div className="card-tabs">
           <ul className="tabs tabs-fixed-width grey lighten-2">
