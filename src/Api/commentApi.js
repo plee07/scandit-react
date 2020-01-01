@@ -7,11 +7,11 @@ async function getComments(postId){
     return data;
 }
 
-async function postComment(postId, text, auth){
+async function postComment(postId, text, auth, notifyOP){
     const url = `/post/${postId}`;
     
-    const comment = { text: text };
-    
+    const comment = { text: text, notifyOP: notifyOP};
+    console.log(comment);
     const options = {
         method: 'POST',
         headers: {

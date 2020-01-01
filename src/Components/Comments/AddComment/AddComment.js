@@ -13,7 +13,8 @@ class AddComment extends React.Component {
     }
     submitForm(e){
         e.preventDefault();
-        CommentApi.postComment(this.props.postId, e.target.comment.value, this.cookies.get("jwt"))
+        const checkbox = document.getElementById('notifyOP');
+        CommentApi.postComment(this.props.postId, e.target.comment.value, this.cookies.get("jwt"), checkbox.checked)
         .then((data)=>{
           console.log(data);
           if(data.commentId){
@@ -21,8 +22,6 @@ class AddComment extends React.Component {
               errorMessage: false,
               message: ""
             })
-            console.log("reached here?")
-            // this.props.history.push(`/comments/${this.props.postId}`);
             document.location.reload() // iffy about this one, lets see if theres another way
           }
           else if(!data.postId && data.title){
@@ -44,7 +43,14 @@ class AddComment extends React.Component {
                   <textarea id="comment" className="materialize-textarea"></textarea>
                   <label htmlFor="comment">Add Comment</label>
                 </div>
+
                 <div className="center-align">
+                <p>
+                    <label>
+                        <input id="notifyOP" type="checkbox" />
+                        <span>Send Notification to OP</span>
+                    </label>
+                </p>
                 <button className="grey lighten-1 waves-effect waves-light btn-large">Add Comment</button>
               </div>
               </div>
