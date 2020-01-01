@@ -27,8 +27,24 @@ async function postComment(postId, text, auth, notifyOP){
     return data;
 }
 
+async function deleteComment(commentId, auth){
+    const url = `/${commentId}`;
+    const options = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${auth}`
+        }
+    }
+    const response = await fetch(API_ENDPOINT_BASE + url, options);
+    const data = await response.json();
+    console.log(data);
+    document.location.reload()
+    return data;
+}
+
 
 module.exports = {
-    getComments, postComment
+    getComments, postComment, deleteComment
 }
-// localhost:8080/comments/post/3/comment

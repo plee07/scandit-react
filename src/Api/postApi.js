@@ -26,6 +26,22 @@ async function makePost(title, description, auth){
     return await response.json();
 }
 
+async function deletePost(postId, auth){
+    const url = `/${postId}`;
+    const options = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${auth}`
+        }
+    }
+    const response = await fetch(API_ENDPOINT_BASE + url, options);
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
+
 module.exports = {
-    getPosts, makePost
+    getPosts, makePost, deletePost
 }

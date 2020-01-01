@@ -31,7 +31,10 @@ class Comments extends React.Component {
                 </div>  
                 <AddComment postId={this.props.match.params.id}/>
                 {this.state.comments.map((comment, index)=>{
-                    return <Comment username={comment.user.username} text={comment.text} key={index} />
+                    return <Comment commentId={comment.commentId} 
+                    username={comment.user.username} 
+                    postId={this.props.match.params.id}
+                    text={comment.text} key={index} />
                 })}
             </div>
         )
