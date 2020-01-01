@@ -1,6 +1,6 @@
 import React from 'react';
 import './Post.css'
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Link, BrowserRouter as Router } from 'react-router-dom'
 
 const Post = (props) => {
     return (
